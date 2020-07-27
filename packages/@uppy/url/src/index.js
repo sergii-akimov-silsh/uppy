@@ -84,7 +84,7 @@ module.exports = class Url extends Plugin {
     if (!url) return false
 
     const protocol = url.match(/^([a-z0-9]+):\/\//)[1]
-    if (protocol !== 'http' && protocol !== 'https') {
+    if (protocol !== 'http' && protocol !== 'https' && protocol !== 'ftp' && protocol !== 'sftp') {
       return false
     }
 

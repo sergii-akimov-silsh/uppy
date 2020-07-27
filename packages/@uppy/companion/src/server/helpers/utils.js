@@ -2,6 +2,9 @@ const request = require('request')
 const { URL } = require('url')
 const crypto = require('crypto')
 const { getProtectedHttpAgent, getRedirectEvaluator } = require('./request')
+const Jsftp = require('jsftp')
+const UrlParse = require('url-parse')
+const Mime = require('mime-types')
 
 /**
  *
@@ -51,28 +54,58 @@ exports.sanitizeHtml = (text) => {
  * @return {Promise}
  */
 exports.getURLMeta = (url, blockLocalIPs = false) => {
-  return new Promise((resolve, reject) => {
-    const opts = {
-      uri: url,
-      method: 'HEAD',
-      followRedirect: getRedirectEvaluator(url, blockLocalIPs),
-      agentClass: getProtectedHttpAgent((new URL(url)).protocol, blockLocalIPs)
-    }
+  if (url.indexOf('ftp') === 0 || url.indexOf('sftp') === 0) {
+    return new Promise((resolve, reject) => {
+      const {
+        host,
+        port,
+        user,
+        pass,
+        filePath
+      } = parseFtpUrl(url)
 
-    request(opts, (err, response) => {
-      if (err || response.statusCode >= 300) {
-        // @todo possibly set a status code in the error object to get a more helpful
-        // hint at what the cause of error is.
-        err = err || new Error(`URL server responded with status: ${response.statusCode}`)
-        reject(err)
-      } else {
+      const ftpClient = new Jsftp({
+        host: host,
+        port: port,
+        user: user,
+        pass: pass
+      })
+
+      ftpClient.raw('size', filePath, function (err, data) {
+        if (err) {
+          err = err || new Error('Unexpected exception')
+          reject(err)
+        }
         resolve({
-          type: response.headers['content-type'],
-          size: parseInt(response.headers['content-length'])
+          type: Mime.lookup(filePath),
+          size: parseInt(data.text.split(' ')[1])
         })
-      }
+      })
     })
-  })
+  } else {
+    return new Promise((resolve, reject) => {
+      const opts = {
+        uri: url,
+        method: 'HEAD',
+        followRedirect: getRedirectEvaluator(url, blockLocalIPs),
+        agentClass: getProtectedHttpAgent((new URL(url)).protocol, blockLocalIPs)
+      }
+
+      request(opts, (err, response) => {
+        if (err || response.statusCode >= 300) {
+          // @todo possibly set a status code in the error object to get a more helpful
+          // hint at what the cause of error is.
+          err = err || new Error(`URL server responded with status: ${response.statusCode}`)
+          reject(err)
+        } else {
+          resolve({
+            type: response.headers['content-type'],
+            size: parseInt(response.headers['content-length'])
+          })
+        }
+      })
+    })
+  }
 }
 
 // all paths are assumed to be '/' prepended
@@ -174,3 +207,16 @@ module.exports.decrypt = (encrypted, secret) => {
   decrypted += decipher.final('utf8')
   return decrypted
 }
+
+const parseFtpUrl = (url) => {
+  const urlData = UrlParse(url)
+
+  return {
+    host: urlData.host,
+    port: urlData.port ? urlData.port : 21,
+    user: urlData.username,
+    pass: urlData.password,
+    filePath: urlData.pathname
+  }
+}
+module.exports.parseUrl = parseFtpUrl

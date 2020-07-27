@@ -6,6 +6,7 @@ const validator = require('validator')
 const utils = require('../helpers/utils')
 const { getProtectedHttpAgent, getRedirectEvaluator } = require('../helpers/request')
 const logger = require('../logger')
+const Jsftp = require('jsftp')
 
 module.exports = () => {
   return router()
@@ -85,7 +86,7 @@ const get = (req, res) => {
  */
 const validateURL = (url, debug) => {
   const validURLOpts = {
-    protocols: ['http', 'https'],
+    protocols: ['http', 'https', 'ftp', 'sftp'],
     require_protocol: true,
     require_tld: !debug
   }
@@ -112,25 +113,61 @@ const validateURL = (url, debug) => {
  * @param {string=} traceId
  */
 const downloadURL = (url, onDataChunk, blockLocalIPs, traceId) => {
-  const opts = {
-    uri: url,
-    method: 'GET',
-    followRedirect: getRedirectEvaluator(url, blockLocalIPs),
-    agentClass: getProtectedHttpAgent((new URL(url)).protocol, blockLocalIPs)
-  }
+  if (url.indexOf('ftp') === 0 || url.indexOf('sftp') === 0) {
+    const {
+      host,
+      port,
+      user,
+      pass,
+      filePath
+    } = utils.parseUrl(url)
 
-  request(opts)
-    .on('response', (resp) => {
-      if (resp.statusCode >= 300) {
-        const err = new Error(`URL server responded with status: ${resp.statusCode}`)
-        onDataChunk(err, null)
-      } else {
-        resp.on('data', (chunk) => onDataChunk(null, chunk))
+    const ftpClient = new Jsftp({
+      host: host,
+      port: port,
+      user: user,
+      pass: pass
+    })
+
+    ftpClient.get(filePath, function (err, socket) {
+      socket.on('data', data => {
+        onDataChunk(null, data)
+      })
+
+      socket.on('close', err => {
+        if (err) {
+          logger.error(err, 'controller.url.download.error', traceId)
+        }
+        onDataChunk(null, null)
+      })
+
+      socket.resume()
+
+      if (err) {
+        logger.error(err, 'controller.url.download.error', traceId)
       }
     })
-    .on('end', () => onDataChunk(null, null))
-    .on('error', (err) => {
-      logger.error(err, 'controller.url.download.error', traceId)
-      onDataChunk(err, null)
-    })
+  } else {
+    const opts = {
+      uri: url,
+      method: 'GET',
+      followRedirect: getRedirectEvaluator(url, blockLocalIPs),
+      agentClass: getProtectedHttpAgent((new URL(url)).protocol, blockLocalIPs)
+    }
+
+    request(opts)
+      .on('response', (resp) => {
+        if (resp.statusCode >= 300) {
+          const err = new Error(`URL server responded with status: ${resp.statusCode}`)
+          onDataChunk(err, null)
+        } else {
+          resp.on('data', (chunk) => onDataChunk(null, chunk))
+        }
+      })
+      .on('end', () => onDataChunk(null, null))
+      .on('error', (err) => {
+        logger.error(err, 'controller.url.download.error', traceId)
+        onDataChunk(err, null)
+      })
+  }
 }
