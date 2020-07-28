@@ -1,5 +1,5 @@
 {
-  "name": "@uppy/provider-views",
+  "name": "@ssh-uppy/provider-views",
   "description": "View library for Uppy remote provider plugins.",
   "version": "1.7.0",
   "license": "MIT",
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/transloadit/uppy.git"
+    "url": "git+https://github.com/sergii-akimov-silsh/uppy.git"
   },
   "dependencies": {
     "@uppy/utils": "file:../utils",

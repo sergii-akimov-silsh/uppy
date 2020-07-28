@@ -1,5 +1,5 @@
 {
-  "name": "@uppy/screen-capture",
+  "name": "@ssh-uppy/screen-capture",
   "description": "Uppy plugin that captures video from display or application.",
   "version": "1.0.4",
   "license": "MIT",
@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/transloadit/uppy.git"
+    "url": "git+https://github.com/sergii-akimov-silsh/uppy.git"
   },
   "dependencies": {
     "@uppy/utils": "file:../utils",

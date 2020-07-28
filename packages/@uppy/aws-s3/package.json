@@ -1,5 +1,5 @@
 {
-  "name": "@uppy/aws-s3",
+  "name": "@ssh-uppy/aws-s3",
   "description": "Upload to Amazon S3 with Uppy",
   "version": "1.6.7",
   "license": "MIT",
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/transloadit/uppy.git"
+    "url": "git+https://github.com/sergii-akimov-silsh/uppy.git"
   },
   "dependencies": {
     "@uppy/companion-client": "file:../companion-client",

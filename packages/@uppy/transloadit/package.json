@@ -1,5 +1,5 @@
 {
-  "name": "@uppy/transloadit",
+  "name": "@ssh-uppy/transloadit",
   "description": "The Transloadit plugin can be used to upload files to Transloadit for all kinds of processing, such as transcoding video, resizing images, zipping/unzipping, and more",
   "version": "1.6.3",
   "license": "MIT",
@@ -24,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/transloadit/uppy.git"
+    "url": "git+https://github.com/sergii-akimov-silsh/uppy.git"
   },
   "dependencies": {
     "@uppy/companion-client": "file:../companion-client",

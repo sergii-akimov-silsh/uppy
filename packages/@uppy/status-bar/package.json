@@ -1,5 +1,5 @@
 {
-  "name": "@uppy/status-bar",
+  "name": "@ssh-uppy/status-bar",
   "description": "A progress bar for Uppy, with many bells and whistles.",
   "version": "1.7.1",
   "license": "MIT",
@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/transloadit/uppy.git"
+    "url": "git+https://github.com/sergii-akimov-silsh/uppy.git"
   },
   "dependencies": {
     "@transloadit/prettier-bytes": "0.0.7",

@@ -1,7 +1,7 @@
 {
-  "name": "@uppy/companion-client",
+  "name": "@ssh-uppy/companion-client",
   "description": "Client library for communication with Companion. Intended for use in Uppy plugins.",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "license": "MIT",
   "main": "lib/index.js",
   "types": "types/index.d.ts",
@@ -18,10 +18,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/transloadit/uppy.git"
+    "url": "git+https://github.com/sergii-akimov-silsh/uppy.git"
   },
   "dependencies": {
-    "@uppy/utils": "file:../utils",
+    "@ssh-uppy/utils": "file:../utils",
     "namespace-emitter": "^2.0.1"
   }
 }

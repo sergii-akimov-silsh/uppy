@@ -1,5 +1,5 @@
 {
-  "name": "@uppy/react",
+  "name": "@ssh-uppy/react",
   "description": "React component wrappers around Uppy's official UI plugins.",
   "version": "1.10.0",
   "license": "MIT",
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/transloadit/uppy.git"
+    "url": "git+https://github.com/sergii-akimov-silsh/uppy.git"
   },
   "dependencies": {
     "@uppy/dashboard": "file:../dashboard",

@@ -1,5 +1,5 @@
 {
-  "name": "@uppy/webcam",
+  "name": "@ssh-uppy/webcam",
   "description": "Uppy plugin that takes photos or records videos using the device's camera.",
   "version": "1.6.8",
   "license": "MIT",
@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/transloadit/uppy.git"
+    "url": "git+https://github.com/sergii-akimov-silsh/uppy.git"
   },
   "dependencies": {
     "@uppy/utils": "file:../utils",

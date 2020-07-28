@@ -1,5 +1,5 @@
 {
-  "name": "@uppy/store-default",
+  "name": "@ssh-uppy/store-default",
   "description": "The default simple object-based store for Uppy.",
   "version": "1.2.1",
   "license": "MIT",
@@ -16,6 +16,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/transloadit/uppy.git"
+    "url": "git+https://github.com/sergii-akimov-silsh/uppy.git"
   }
 }

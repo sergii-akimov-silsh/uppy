@@ -1,5 +1,5 @@
 {
-  "name": "@uppy/thumbnail-generator",
+  "name": "@ssh-uppy/thumbnail-generator",
   "description": "Uppy plugin that generates small previews of images to show on your upload UI.",
   "version": "1.6.3",
   "license": "MIT",
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/transloadit/uppy.git"
+    "url": "git+https://github.com/sergii-akimov-silsh/uppy.git"
   },
   "dependencies": {
     "@uppy/utils": "file:../utils",

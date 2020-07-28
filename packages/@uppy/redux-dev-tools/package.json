@@ -1,5 +1,5 @@
 {
-  "name": "@uppy/redux-dev-tools",
+  "name": "@ssh-uppy/redux-dev-tools",
   "description": "Redux developer tools plugin for Uppy that simply syncs Uppy’s state with redux-devtools browser or JS extensions, and allows for basic time travel",
   "version": "1.3.2",
   "license": "MIT",
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/transloadit/uppy.git"
+    "url": "git+https://github.com/sergii-akimov-silsh/uppy.git"
   },
   "peerDependencies": {
     "@uppy/core": "^1.0.0"

@@ -1,5 +1,5 @@
 {
-  "name": "@uppy/react-native",
+  "name": "@ssh-uppy/react-native",
   "description": "React Native Uppy UI components",
   "version": "0.1.3",
   "main": "file-picker/index.js",
@@ -18,6 +18,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/transloadit/uppy.git"
+    "url": "git+https://github.com/sergii-akimov-silsh/uppy.git"
   }
 }

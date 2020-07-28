@@ -1,5 +1,5 @@
 {
-  "name": "@uppy/google-drive",
+  "name": "@ssh-uppy/google-drive",
   "description": "The Google Drive plugin for Uppy lets users import files from their Google Drive account",
   "version": "1.5.9",
   "license": "MIT",
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/transloadit/uppy.git"
+    "url": "git+https://github.com/sergii-akimov-silsh/uppy.git"
   },
   "dependencies": {
     "@uppy/companion-client": "file:../companion-client",

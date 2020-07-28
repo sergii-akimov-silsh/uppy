@@ -1,15 +1,15 @@
 {
-  "name": "@uppy/companion",
+  "name": "@ssh-uppy/companion",
   "version": "2.0.0-alpha.8",
   "description": "OAuth helper and remote fetcher for Uppy's (https://uppy.io) extensible file upload widget with support for drag&drop, resumable uploads, previews, restrictions, file processing/encoding, remote providers like Dropbox and Google Drive, S3 and more :dog:",
   "main": "lib/companion.js",
   "types": "types/index.d.ts",
   "author": "Transloadit.com",
   "license": "ISC",
-  "homepage": "https://github.com/transloadit/uppy#readme",
+  "homepage": "https://github.com/sergii-akimov-silsh/uppy#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/transloadit/uppy.git"
+    "url": "git+https://github.com/sergii-akimov-silsh/uppy.git"
   },
   "keywords": [
     "file uploader",
@@ -26,7 +26,7 @@
     "realtime"
   ],
   "bin": {
-    "companion": "./bin/companion"
+    "companion": "bin/companion"
   },
   "dependencies": {
     "@purest/providers": "1.0.1",
@@ -91,5 +91,12 @@
   },
   "engines": {
     "node": ">=6.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/sergii-akimov-silsh/uppy/issues"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "test"
   }
 }

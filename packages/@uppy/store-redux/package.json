@@ -1,5 +1,5 @@
 {
-  "name": "@uppy/store-redux",
+  "name": "@ssh-uppy/store-redux",
   "description": "Make Uppy use your existing Redux store.",
   "version": "1.2.1",
   "license": "MIT",
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/transloadit/uppy.git"
+    "url": "git+https://github.com/sergii-akimov-silsh/uppy.git"
   },
   "dependencies": {
     "cuid": "^2.1.1"

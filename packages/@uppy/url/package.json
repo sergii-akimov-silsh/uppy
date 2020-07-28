@@ -1,7 +1,7 @@
 {
-  "name": "@uppy/url",
+  "name": "@ssh-uppy/url",
   "description": "The Url plugin lets users import files from the Internet. Paste any URL and it’ll be added!",
-  "version": "1.5.8",
+  "version": "1.5.9",
   "license": "MIT",
   "main": "lib/index.js",
   "style": "dist/style.min.css",
@@ -19,14 +19,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/transloadit/uppy.git"
+    "url": "git+https://github.com/sergii-akimov-silsh/uppy.git"
   },
   "dependencies": {
-    "@uppy/companion-client": "file:../companion-client",
-    "@uppy/utils": "file:../utils",
+    "@ssh-uppy/companion-client": "file:../companion-client",
+    "@ssh-uppy/utils": "file:../utils",
     "preact": "8.2.9"
   },
   "peerDependencies": {
-    "@uppy/core": "^1.0.0"
+    "@ssh-uppy/core": "^1.0.0"
   }
 }
